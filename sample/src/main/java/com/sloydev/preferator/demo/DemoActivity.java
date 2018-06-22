@@ -23,7 +23,7 @@ public class DemoActivity extends AppCompatActivity {
         findViewById(R.id.demo_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Preferator.launch(DemoActivity.this);
+                Preferator.INSTANCE.launch(DemoActivity.this);
             }
         });
         findViewById(R.id.demo_prefill).setOnClickListener(new View.OnClickListener() {

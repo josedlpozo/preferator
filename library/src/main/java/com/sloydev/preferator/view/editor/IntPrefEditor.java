@@ -1,4 +1,4 @@
-package com.sloydev.preferator.editor;
+package com.sloydev.preferator.view.editor;
 
 
 import android.content.Context;

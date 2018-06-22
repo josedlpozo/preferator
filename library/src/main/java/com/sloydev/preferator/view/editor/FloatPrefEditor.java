@@ -1,4 +1,4 @@
-package com.sloydev.preferator.editor;
+package com.sloydev.preferator.view.editor;
 
 
 import android.content.Context;
@@ -31,7 +31,7 @@ public class FloatPrefEditor extends FrameLayout {
 
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.item_editor_float, this, true);
-        valueView = (EditText) findViewById(R.id.pref_value);
+        valueView = findViewById(R.id.pref_value);
         valueView.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {

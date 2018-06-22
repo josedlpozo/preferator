@@ -1,4 +1,4 @@
-package com.sloydev.preferator.editor;
+package com.sloydev.preferator.view.editor;
 
 
 import android.content.Context;
@@ -30,7 +30,7 @@ public class BooleanPrefEditor extends FrameLayout {
 
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.item_editor_boolean, this, true);
-        valueView = (Switch) findViewById(R.id.pref_value_boolean);
+        valueView = findViewById(R.id.pref_value_boolean);
         valueView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
