@@ -3,11 +3,16 @@ package com.sloydev.preferator.data
 import android.content.Context
 import android.content.SharedPreferences
 import com.sloydev.preferator.SdkFilter
+import com.sloydev.preferator.model.PreferatorConfig
+import com.sloydev.preferator.model.Preference
+import com.sloydev.preferator.model.PreferenceItem
+import com.sloydev.preferator.model.Preferences
 import java.io.File
 
 class PreferatorDataSource(private val context: Context) {
 
-    fun get(): Preferences = File(context.applicationInfo.dataDir + "/shared_prefs").list().map(::truncateXmlExtension)
+    fun get(config: PreferatorConfig): Preferences = File(context.applicationInfo.dataDir + "/shared_prefs").list().map(::truncateXmlExtension)
+        .filter { if (SdkFilter.isSdkPreference(it)) config.showingSdkPreferences else true }
         .sortedWith(compareBy({ SdkFilter.isSdkPreference(it) }, { it }))
         .map(::extractItems)
         .let(::Preferences)

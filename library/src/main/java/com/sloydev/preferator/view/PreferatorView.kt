@@ -4,7 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.sloydev.preferator.data.PreferatorDataSource
-import com.sloydev.preferator.data.Preferences
+import com.sloydev.preferator.model.PreferatorConfig
+import com.sloydev.preferator.model.Preferences
 import com.sloydev.preferator.presenter.PreferatorPresenter
 import com.sloydev.preferator.view.factory.SectionViewFactory
 
@@ -12,7 +13,7 @@ class PreferatorView @JvmOverloads constructor(context: Context, val attr: Attri
     : LinearLayout(context, attr, defStyleAttr), PreferatorPresenter.View {
 
     private val sectionViewFactory: SectionViewFactory by lazy { SectionViewFactory() }
-    private val presenter: PreferatorPresenter = PreferatorPresenter(this, PreferatorDataSource(context))
+    private val presenter: PreferatorPresenter = PreferatorPresenter(this, PreferatorConfig(false), PreferatorDataSource(context))
 
     init {
         presenter.start()

@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.sloydev.preferator.R
 import com.sloydev.preferator.SdkFilter
-import com.sloydev.preferator.data.Preference
+import com.sloydev.preferator.model.Preference
 import com.sloydev.preferator.model.Type
 
 class SectionViewFactory {
