@@ -26,10 +26,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:27.1.0'
-    debugCompile project(':library')
-    releaseCompile project(':library-no-op')
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    debugImplementation project(':library')
+    releaseImplementation project(':library-no-op')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()

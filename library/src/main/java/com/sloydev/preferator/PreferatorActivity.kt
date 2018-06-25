@@ -3,7 +3,6 @@ package com.sloydev.preferator
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.view.ViewGroup
 
 class PreferatorActivity : AppCompatActivity() {
 
@@ -14,7 +13,6 @@ class PreferatorActivity : AppCompatActivity() {
             it.setDisplayHomeAsUpEnabled(true)
             it.subtitle = getApplicationName()
         }
-        supportFragmentManager.beginTransaction().add(R.id.root, PreferatorFragment.newInstance()).commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when {
@@ -29,9 +27,5 @@ class PreferatorActivity : AppCompatActivity() {
         val applicationInfo = applicationInfo
         val stringId = applicationInfo.labelRes
         return if (stringId == 0) applicationInfo.nonLocalizedLabel.toString() else getString(stringId)
-    }
-
-    companion object {
-        const val TAG = "Preferator"
     }
 }
