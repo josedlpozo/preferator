@@ -6,29 +6,25 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-
 import com.sloydev.preferator.Preferator;
-
+import com.sloydev.preferator.model.PreferatorConfig;
 import java.util.HashSet;
 
 import static java.util.Arrays.asList;
 
 public class DemoActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
 
         findViewById(R.id.demo_edit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Preferator.INSTANCE.launch(DemoActivity.this);
+            @Override public void onClick(View view) {
+                Preferator.INSTANCE.launch(DemoActivity.this, new PreferatorConfig(true));
             }
         });
         findViewById(R.id.demo_prefill).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            @Override public void onClick(View view) {
                 prefillPreferences();
             }
         });
@@ -38,19 +34,18 @@ public class DemoActivity extends AppCompatActivity {
         fill(getPreferences(MODE_PRIVATE));
         fill(PreferenceManager.getDefaultSharedPreferences(this));
         fill(getSharedPreferences("another file", MODE_PRIVATE));
+        fill(getSharedPreferences("com.google.pruebas", MODE_PRIVATE));
     }
 
     private void fill(SharedPreferences preferences) {
-        preferences
-                .edit()
-                .putString("some_string", "a string value")
-                .putInt("some_int", 42)
-                .putLong("some_long", System.currentTimeMillis())
-                .putBoolean("some_boolean", true)
-                .putFloat("some_float", 3.14f)
-                .putStringSet("some_set", new HashSet<>(asList("a", "b", "c")))
-                .apply();
+        preferences.edit()
+                   .putString("some_string", "a string value")
+                   .putInt("some_int", 42)
+                   .putLong("some_long", System.currentTimeMillis())
+                   .putBoolean("some_boolean", true)
+                   .putFloat("some_float", 3.14f)
+                   .putStringSet("some_set", new HashSet<>(asList("a", "b", "c")))
+                   .apply();
         Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
     }
-
 }

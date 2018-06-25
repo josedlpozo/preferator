@@ -12,10 +12,17 @@ import com.sloydev.preferator.view.factory.SectionViewFactory
 class PreferatorView @JvmOverloads constructor(context: Context, val attr: AttributeSet? = null, defStyleAttr: Int = 0)
     : LinearLayout(context, attr, defStyleAttr), PreferatorPresenter.View {
 
+    var config: PreferatorConfig = PreferatorConfig()
+        set(value) {
+            presenter.config = value
+            field = value
+        }
+
     private val sectionViewFactory: SectionViewFactory by lazy { SectionViewFactory() }
-    private val presenter: PreferatorPresenter = PreferatorPresenter(this, PreferatorConfig(false), PreferatorDataSource(context))
+    private val presenter: PreferatorPresenter by lazy { PreferatorPresenter(this, PreferatorDataSource(context)) }
 
     init {
+        orientation = VERTICAL
         presenter.start()
     }
 

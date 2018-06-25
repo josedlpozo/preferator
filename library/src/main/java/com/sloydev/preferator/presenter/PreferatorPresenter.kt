@@ -4,7 +4,13 @@ import com.sloydev.preferator.data.PreferatorDataSource
 import com.sloydev.preferator.model.PreferatorConfig
 import com.sloydev.preferator.model.Preferences
 
-class PreferatorPresenter(private val view: View, private val config: PreferatorConfig, private val dataSource: PreferatorDataSource) {
+class PreferatorPresenter(private val view: View, private val dataSource: PreferatorDataSource) {
+
+    var config: PreferatorConfig = PreferatorConfig()
+        set(value) {
+            field = value
+            start()
+        }
 
     interface View {
         fun render(preferences: Preferences)

@@ -6,6 +6,7 @@
              android:background="@color/colorBackground">
 
     <com.sloydev.preferator.view.PreferatorView
+        android:id="@+id/preferatorView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
